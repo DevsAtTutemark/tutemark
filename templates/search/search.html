@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Search</h2>
+
+    <form method="get" action=".">
+        <table>
+            {{ form.as_table }}
+                <td>
+                    <input type="submit" value="Search">
+                </td>
+        </table>
+
+    {% if query %}
+        
+        <h3>Results</h3>
+ 
+        {% for result in page.object_list %}
+        <h4>{{ result.object.title }}</h4>
+        <h6>{{ result.object.weblink }}</h6>
+        <h6>{{ result.object.marks }}</h6>
+        <h6>{{ result.object.TEXT_OR_VIDEO }}</h6>
+
+      {% empty %}
+          <p>No results found.</p>
+      {% endfor %}
+
+    {% endif %}
+  </form>
+
+{% endblock %}

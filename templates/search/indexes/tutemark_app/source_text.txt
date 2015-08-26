@@ -1,0 +1,4 @@
+{{ object.title }}
+{{ object.weblink }}
+{{ object.marks }}
+{{ object.TEXT_OR_VIDEO }}
