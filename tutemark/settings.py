@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'oj-(-19voewm3g6qz1n)q95sbhv^)^a)c3x*+p(gg(by8%t0v#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -122,7 +122,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 
@@ -165,3 +164,14 @@ STATIC_URL = '/static/'
 # Deployment
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
+
+# Enable Connection Pooling
+DATABASES['default']['ENGINE'] = 'django_postgrespool'
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
