@@ -158,8 +158,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'tutemark_app/static')
-
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # Deployment
 CSRF_COOKIE_SECURE = True
@@ -174,4 +176,8 @@ DATABASES['default']['ENGINE'] = 'django_postgrespool'
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
+#from django.conf import Settings, global_settings
+#STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#Settings.STATICFILES_STORAGE = global_settings.STATICFILES_STORAGE
